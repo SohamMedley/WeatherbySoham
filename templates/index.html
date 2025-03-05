@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather by Soham</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Inline styles to improve input and button layout -->
+  <style>
+    .input-box {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.375rem;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+    .input-box:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    @media (min-width: 600px) {
+      .button-group {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-background">
+    <div class="gradient-sphere sphere-1"></div>
+    <div class="gradient-sphere sphere-2"></div>
+    <div class="gradient-sphere sphere-3"></div>
+  </div>
+
+  <header>
+    <div class="container">
+      <h1 class="gradient-text">Weather by Soham 🌦️</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Input for City Name -->
+      <input type="text" id="cityInput" placeholder="Enter City Name" class="input-box">
+      
+      <!-- Group of action buttons -->
+      <div class="button-group">
+        <button class="btn-primary" onclick="fetchWeather()">Get Weather</button>
+        <button class="btn-primary" onclick="fetchWeatherByLocation()">Use My Location</button>
+      </div>
+
+      <div id="weatherResult" class="hidden">
+        <h2 class="gradient-text" id="cityName"></h2>
+        <p>Temperature: <span id="temperature"></span>°C</p>
+        <p>Wind Speed: <span id="windSpeed"></span> km/h</p>
+        <p>Humidity: <span id="humidity"></span>%</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
